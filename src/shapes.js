@@ -1,20 +1,15 @@
 class Shape {
     static className = "Shape";
 
-    static default = `
-        <option selected>
-            Elija la presentación
-        </option>`
+    static default = "Elija la presentación";
 
     constructor(shape) {
-        this.id = shape.id;
-        this.description = shape.description;
+        this._option = document.createElement("option");
+        this._option.value = shape.id;
+        this._option.text = shape.description;
     }
 
     get option() {
-        const option = document.createElement("option");
-        option.value = this.id;
-        option.text = this.description;
-        return option;
+        return this._option;
     }
 }

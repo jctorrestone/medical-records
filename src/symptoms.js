@@ -1,5 +1,5 @@
-class Symptom extends HTMLElement {
-    static tagName = "symptom-row";
+class Symptom {
+    static className = "Symptom";
 
     static header = `
         <div class="row">
@@ -9,19 +9,18 @@ class Symptom extends HTMLElement {
         </div>
     `;
 
-    constructor() {
-        super();
+    constructor(symptom) {
+        this._row = document.createElement("div");
+        this._row.setAttribute("class", "row");
+
+        const description = document.createElement("div");
+        description.setAttribute("class", "col")
+        description.append(symptom.description);
+
+        this._row.appendChild(description);
     }
 
-    set row(symptom) {
-        this.innerHTML = `
-            <div class="row">
-                <div class="col">
-                    ${ symptom.description }
-                </div>
-            </div>
-        `;
+    get row() {
+        return this._row;
     }
 }
-
-customElements.define(Symptom.tagName, Symptom);

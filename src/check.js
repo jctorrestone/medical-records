@@ -9,24 +9,26 @@ class Check extends HTMLElement {
         this._list = list;
     }
 
-    set tag(tag) {
-        this._tag = tag;
+    set check(className) {
+        this._check = className;
     }
 
     init() {
-        this.innerHTML = `
-            <ul class="list-group">
-                ${
-                    this._list.map(element => 
-                        `<${this._tag}></${this._tag}>`).join("")
-                }
-            </ul>
-        `;
+        const list_group = document.createElement("ul");
+        list_group.setAttribute("class", "list-group");
 
-        const tag_list = document.querySelectorAll(this._tag);
-        tag_list.forEach((element, index) => {
-            element.check = this._list[index];
+        this._list.forEach(element => {
+            const group_item = document.createElement("li");
+            group_item.setAttribute("class", "list-group-item");
+
+            const [check, label] = (new classes[this._check](element)).check;
+            group_item.appendChild(check);
+            group_item.appendChild(label);
+
+            list_group.appendChild(group_item);
         });
+
+        this.appendChild(list_group);
     }
 }
 

@@ -1,20 +1,15 @@
 class Unit {
     static className = "Unit";
 
-    static default = `
-        <option selected>
-            Elija la unidad
-        </option>`
+    static default = "Elija la unidad";
 
     constructor(unit) {
-        this.id = unit.id;
-        this.symbol = unit.symbol;
+        this._option = document.createElement("option");
+        this._option.value = unit.id;
+        this._option.text = unit.symbol;
     }
 
     get option() {
-        const option = document.createElement("option");
-        option.value = this.id;
-        option.text = this.symbol;
-        return option;
+        return this._option;
     }
 }

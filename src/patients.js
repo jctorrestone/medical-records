@@ -1,5 +1,5 @@
-class Patient extends HTMLElement {
-    static tagName = "patient-row";
+class Patient {
+    static className = "Patient";
 
     static header = `
         <div class="row">
@@ -15,25 +15,28 @@ class Patient extends HTMLElement {
         </div>
     `;
 
-    constructor() {
-        super();
+    constructor(patient) {
+        this._row = document.createElement("div");
+        this._row.setAttribute("class", "row");
+
+        const last_name = document.createElement("div");
+        last_name.setAttribute("class", "col");
+        last_name.append(patient.last_name);
+
+        const name = document.createElement("div");
+        name.setAttribute("class", "col");
+        name.append(patient.name);
+
+        const gender = document.createElement("div");
+        gender.setAttribute("class", "col");
+        gender.append(patient.gender? "Masculino" : "Femenino");
+
+        this._row.appendChild(last_name);
+        this._row.appendChild(name);
+        this._row.appendChild(gender);
     }
 
-    set row(patient) {
-        this.innerHTML = `
-            <div class="row">
-                <div class="col">
-                    ${ patient.last_name }
-                </div>
-                <div class="col">
-                    ${ patient.name } días
-                </div>
-                <div class="col">
-                    ${ patient.gender? "Masculino" : "Femenino" }
-                </div>
-            </div>
-        `;
+    get row() {
+        return this._row;
     }
 }
-
-customElements.define(Patient.tagName, Patient);

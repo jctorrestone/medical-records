@@ -13,26 +13,21 @@ class Grid extends HTMLElement {
         this._list = list;
     }
 
-    set tag(tag) {
-        this._tag = tag;
+    set row(className) {
+        this._row = className;
     }
 
-    //TODO Remove id
     init() {
-        this.innerHTML = `
-            <div class="container">
-                ${  this._header }
-                ${
-                    this._list.map(element => 
-                        `<${this._tag} id=${element.id}></${this._tag}>`).join("")
-                }
-            </div>
-        `;
+        const grid = document.createElement("div");
+        grid.setAttribute("class", "container");
+        grid.innerHTML = this._header;
 
-        const tag_list = document.querySelectorAll(this._tag);
-        tag_list.forEach((element, index) => {
-            element.row = this._list[index];
+        this._list.forEach(element => {
+            const row = (new classes[this._row](element)).row;
+            grid.appendChild(row);
         });
+
+        this.appendChild(grid);
     }
 }
 

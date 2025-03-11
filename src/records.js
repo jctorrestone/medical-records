@@ -1,5 +1,5 @@
-class Record extends HTMLElement {
-    static tagName = "record-row";
+class Record {
+    static className = "Record";
 
     static header = `
         <div class="row">
@@ -15,25 +15,28 @@ class Record extends HTMLElement {
         </div>
     `;
 
-    constructor() {
-        super();
+    constructor(record) {
+        this._row = document.createElement("div")
+        this._row.setAttribute("class", "row");
+
+        const date = document.createElement("div");
+        date.setAttribute("class", "col");
+        date.append(record.rdate);
+
+        const duration = document.createElement("div");
+        duration.setAttribute("class", "col");
+        duration.append(`${record.duration} días`);
+
+        const patient = document.createElement("div");
+        patient.setAttribute("class", "col");
+        patient.append(`${record.patient.last_name}, ${record.patient.name}`);
+
+        this._row.appendChild(date);
+        this._row.appendChild(duration);
+        this._row.appendChild(patient);
     }
 
-    set row(record) {
-        this.innerHTML = `
-            <div class="row">
-                <div class="col">
-                    ${ record.rdate }
-                </div>
-                <div class="col">
-                    ${ record.duration } días
-                </div>
-                <div class="col">
-                    ${ record.patient.last_name }, ${ record.patient.name }
-                </div>
-            </div>
-        `;
+    get row() {
+        return this._row;
     }
 }
-
-customElements.define(Record.tagName, Record);

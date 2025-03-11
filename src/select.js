@@ -18,16 +18,23 @@ class Select extends HTMLElement {
     }
 
     init() {
-        this.innerHTML = `
-            <select class="form-select" aria-label="Select ${this._option}">
-                ${  this._default }
-            </select>
-        `;
+        const select = document.createElement("select");
+        select.setAttribute("class", "form-select");
+        select.setAttribute("aria-label", `"Select ${this._option}"`);
+       
+        const defaultOpt = document.createElement("option");
+        defaultOpt.disabled = true;
+        defaultOpt.selected = true;
+        defaultOpt.text = this._default;
 
+        select.options.add(defaultOpt);
+        
         this._list.forEach(element => {
             const option = (new classes[this._option](element)).option;
-            this.getElementsByTagName("select")[0].options.add(option);
+            select.options.add(option);
         });
+
+        this.appendChild(select);
     }
 }
 

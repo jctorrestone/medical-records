@@ -1,5 +1,5 @@
-class Medicine extends HTMLElement {
-    static tagName = "medicine-row";
+class Medicine {
+    static className = "Medicine";
 
     static header = `
         <div class="row">
@@ -15,25 +15,28 @@ class Medicine extends HTMLElement {
         </div>
     `;
 
-    constructor() {
-        super();
+    constructor(medicine) {
+        this._row = document.createElement("div");
+        this._row.setAttribute("class", "row");
+
+        const name = document.createElement("div");
+        name.setAttribute("class", "col");
+        name.append(medicine.name);
+
+        const type = document.createElement("div");
+        type.setAttribute("class", "col");
+        type.append(medicine.formulation.shape.description);
+
+        const dose = document.createElement("div");
+        dose.setAttribute("class", "col");
+        dose.append(`${medicine.dose}${medicine.formulation.unit.symbol}`);
+
+        this._row.appendChild(name);
+        this._row.appendChild(type);
+        this._row.appendChild(dose);
     }
 
-    set row(medicine) {
-        this.innerHTML = `
-            <div class="row">
-                <div class="col">
-                    ${ medicine.name }
-                </div>
-                <div class="col">
-                    ${ medicine.formulation.shape.description }
-                </div>
-                <div class="col">
-                    ${ medicine.dose }${ medicine.formulation.unit.symbol }
-                </div>
-            </div>
-        `;
+    get row() {
+        return this._row;
     }
 }
-
-customElements.define(Medicine.tagName, Medicine);
