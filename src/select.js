@@ -13,6 +13,10 @@ class Select extends HTMLElement {
         this._list = list;
     }
 
+    set method(method) {
+        this._method = method;
+    }
+
     set option(className) {
         this._option = className;
     }
@@ -21,6 +25,7 @@ class Select extends HTMLElement {
         const select = document.createElement("select");
         select.setAttribute("class", "form-select");
         select.setAttribute("aria-label", `"Select ${this._option}"`);
+        select.onchange = this._method;
        
         const defaultOpt = document.createElement("option");
         defaultOpt.disabled = true;

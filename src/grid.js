@@ -13,6 +13,10 @@ class Grid extends HTMLElement {
         this._list = list;
     }
 
+    set method(method) {
+        this._method = method;
+    }
+
     set row(className) {
         this._row = className;
     }
@@ -23,7 +27,7 @@ class Grid extends HTMLElement {
         grid.innerHTML = this._header;
 
         this._list.forEach(element => {
-            const row = (new classes[this._row](element)).row;
+            const row = (new classes[this._row](element, this._method)).row;
             grid.appendChild(row);
         });
 

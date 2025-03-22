@@ -1,0 +1,122 @@
+<div class="modal fade" id="modalRecord" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalRecordLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalRecordLabel">AVISO</h1>
+                <button onclick="removeFocus()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Crear la historia clínica?</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="removeFocus()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button onclick="addRecords()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <H4>
+        Cree una nueva historia clínica
+    </H4>
+</div>
+<div class="text-start">
+    <h5>
+        I. Filiación
+    </h5>
+</div>
+<div class="row">
+    <div class="col-8">
+        <button onclick="renderPatients()" id="patient" class="btn btn-outline-primary" type="button"></button>
+    </div>
+    <div class="col-4">
+        <input id="rdate" class="form-control" type="date">
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="age" type="text" class="form-control" placeholder="">
+            <label for="age">Edad</label>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="weight" type="text" class="form-control" placeholder="">
+            <label for="weight">Peso</label>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="height" type="text" class="form-control" placeholder="">
+            <label for="height">Talla</label>
+        </div>
+    </div>
+</div>
+<div>
+    <select class="form-select" size="1" id="history" multiple>
+        <option onclick="renderDiseases(1)" selected>Antecedentes...</option>
+    </select>
+</div>
+<div class="text-start">
+    <h5>
+        II. Historia de la enfermedad
+    </h5>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="form-floating">
+            <input id="duration" type="text" class="form-control" placeholder="">
+            <label for="duration">Tiempo de la enfermedad</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div>
+            <select class="form-select" size="1" id="symptoms" multiple>
+                <option onclick="renderSymptoms()" selected>Elija los síntomas principales</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>
+            <button onclick="renderVitalSigns()" id="vitalSigns" class="btn btn-outline-primary" type="button">
+                Signos vitales
+            </button>
+        </div>
+    </div>
+    <div class="col-6">
+        <div>
+            <select class="form-select" size="1" id="idx" multiple>
+                <option onclick="renderDiseases(2)" selected>Impresión diagnóstica...</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="text-start">
+    <h6>
+        Exámenes solicitados
+    </h6>
+</div>
+<div>
+    <check-list id="exams"></check-list>
+</div>
+<div class="text-start">
+    <h6>
+        Tratamiento
+    </h6>
+</div>
+<div>
+    <select class="form-select" size="1" id="treatments" multiple>
+        <option onclick="renderAddTreatment()" selected>Añadir tratamiento...</option>
+    </select>
+</div>
+<div>
+    <button onclick="renderMain()" class="btn btn-outline-secondary" type="button">
+        Cancelar
+    </button>
+    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalRecord">
+        Añadir registro
+    </button>
+</div>

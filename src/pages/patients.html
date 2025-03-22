@@ -1,1 +1,66 @@
-<grid-list id="patients"></grid-list>
+<div>
+    <H4>
+        Pacientes
+    </H4>
+</div>
+<div class="row">
+    <div class="col-8">
+        <grid-list id="patients"></grid-list>
+        <pagination-list id="patientsPag"></pagination-list>
+    </div>
+    <div class="col-4">
+        <div class="input-group">
+            <input id="inputSearch" class="form-control" type="text" placeholder="Nombre o Apellido">
+            <button onclick="searchPatients()" class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSymptom">
+                Añadir paciente
+            </button>
+            <div class="modal fade" id="modalSymptom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Añada un nuevo paciente</h1>
+                            <button onclick="removeFocus()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-floating">
+                                <input id="name" type="text" class="form-control" placeholder="">
+                                <label for="name">Nombres</label>
+                            </div>
+                            <div class="form-floating">
+                                <input id="last_name" type="text" class="form-control" placeholder="">
+                                <label for="last_name">Apellidos</label>
+                            </div>
+                            <div class="text-start">
+                                Género
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" value="M" id="maleRadio" checked>
+                                <label class="form-check-label" for="maleRadio">
+                                    Masculino
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" value="F" id="femaleRadio">
+                                <label class="form-check-label" for="femaleRadio">
+                                    Femenino
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="removeFocus()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button onclick="addPatients()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button onclick="renderAddRecord()" class="btn btn-outline-secondary" type="button">Volver</button>
+</div>

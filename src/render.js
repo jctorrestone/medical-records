@@ -10,6 +10,8 @@ const classes = {
     VitalSign
 };
 
+const API_PATH = "http://localhost:8080/"
+
 async function loadPage(page) {
     const response = await fetch(`./pages/${page}.html`);
     const text = await response.text();
@@ -17,22 +19,37 @@ async function loadPage(page) {
     content.innerHTML = text;
 }
 
-loadPage("main");
+async function fetchAPI(endpoint, method, body={}) {
+    if (method == "POST") {
+        body = JSON.stringify(body);
+        const response = await fetch(API_PATH + endpoint, {
+            method,
+            body
+        });
+        const json = await response.json();
+        return json;
+    }
 
-fetch("http://localhost:8080/records")
-.then(response => response.json())
-.then(json => {
-    const data = json;
-    const grid_list = document.getElementById("records");
-    grid_list.header = Record.header;
-    //select_list.default = Unit.default;
-    grid_list.list = data;
-    grid_list.row = Record.className;
-    grid_list.init();
-/* 
-    <h1>Records</h1>
-      <input class="form-control" type="date">
-      <check-list id="records"></check-list>
-*/
-}); 
+    const response = await fetch(API_PATH + endpoint);
+    const json = await response.json();
+    return json;
+}
 
+const fullRecord = {
+    record: {
+        patient: null,
+        rdate: null,
+        age: null,
+        weight: null,
+        height: null,
+        duration: null
+    },
+    diseases_history: [],
+    symptoms: [],
+    vital_signs: [],
+    idx: [],
+    exams: [],
+    treatments: []
+}
+
+renderMain();

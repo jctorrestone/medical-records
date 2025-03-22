@@ -1,1 +1,24 @@
-<grid-list id="records"></grid-list>
+<div>
+    <H4>
+        Historias clínicas
+    </H4>
+</div>
+<div class="row">
+    <div class="col-8">
+        <grid-list id="records"></grid-list>
+        <pagination-list id="recordsPag"></pagination-list>
+    </div>
+    <div class="col-4">
+        <div class="input-group">
+            <input id="inputSearch" class="form-control" type="text" placeholder="Nombre o Apellido">
+            <button onclick="searchRecords()" class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+        <div>
+            <button onclick="renderAddRecord()" class="btn btn-outline-primary" type="button">
+                Añadir historia clínica
+            </button>
+        </div>
+    </div>
+</div>

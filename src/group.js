@@ -9,6 +9,10 @@ class Group extends HTMLElement {
         this._list = list;
     }
 
+    set method(method) {
+        this._method = method;
+    }
+
     set check(className) {
         this._check = className;
     }
@@ -21,13 +25,14 @@ class Group extends HTMLElement {
             const group_text = document.createElement("div");
             group_text.setAttribute("class", "input-group-text")
 
-            const [check, label] = (new classes[this._check](element)).check;
+            const [check, label, placeholder] = (new classes[this._check](element, this._method)).check;
             group_text.appendChild(check);
             group_text.appendChild(label);
 
             const input = document.createElement("input");
             input.setAttribute("class", "form-control");
             input.setAttribute("type", "text");
+            input.setAttribute("placeholder", placeholder);
 
             group.appendChild(group_text);
             group.appendChild(input);

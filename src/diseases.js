@@ -9,9 +9,10 @@ class Disease {
         </div>
     `;
 
-    constructor(disease) {
+    constructor(disease, method) {
         this._row = document.createElement("div");
         this._row.setAttribute("class", "row");
+        this._row.onclick = () => method(disease);
 
         const description = document.createElement("div");
         description.setAttribute("class", "col");

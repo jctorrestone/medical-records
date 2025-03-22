@@ -9,6 +9,10 @@ class Check extends HTMLElement {
         this._list = list;
     }
 
+    set method(method) {
+        this._method = method;
+    }
+
     set check(className) {
         this._check = className;
     }
@@ -21,7 +25,7 @@ class Check extends HTMLElement {
             const group_item = document.createElement("li");
             group_item.setAttribute("class", "list-group-item");
 
-            const [check, label] = (new classes[this._check](element)).check;
+            const [check, label] = (new classes[this._check](element, this._method)).check;
             group_item.appendChild(check);
             group_item.appendChild(label);
 

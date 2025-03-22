@@ -1,29 +1,29 @@
 <div>
     <H4>
-        Síntomas
+        Enfermedades
     </H4>
 </div>
 <div class="row">
     <div class="col-8">
-        <grid-list id="symptoms"></grid-list>
-        <pagination-list id="symptomsPag"></pagination-list>
+        <grid-list id="diseases"></grid-list>
+        <pagination-list id="diseasesPag"></pagination-list>
     </div>
     <div class="col-4">
         <div class="input-group">
-            <input id="inputSearch" class="form-control" type="text" placeholder="¿Que síntoma?">
-            <button onclick="searchSymptoms()" class="btn btn-outline-secondary" type="button">
+            <input id="inputSearch" class="form-control" type="text" placeholder="¿Que enfermedad?">
+            <button onclick="searchDiseases()" class="btn btn-outline-secondary" type="button">
                 <i class="bi bi-search"></i>
             </button>
         </div>
         <div>
-            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalSymptom">
-                Nuevo síntoma
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalDisease">
+                Nueva enfermedad
             </button>
-            <div class="modal fade" id="modalSymptom" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="modalDisease" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Añada un nuevo síntoma</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Añada una nueva enfermedad</h1>
                             <button onclick="removeFocus()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -34,10 +34,14 @@
                         </div>
                         <div class="modal-footer">
                             <button onclick="removeFocus()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button onclick="addSymptoms()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Añadir</button>
+                            <button onclick="addDiseases()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Añadir</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="visually-hidden">
+                <textarea class="form-control" placeholder="" id="h_description" style="height: 100px"></textarea>
+                <label for="h_description">Describa el antecedente</label>
             </div>
         </div>
     </div>

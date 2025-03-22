@@ -1,0 +1,94 @@
+<div>
+    <H4>
+        Añada un nuevo tratamiento
+    </H4>
+</div>
+<div class="row">
+    <div class="col-8">
+        <grid-list id="medicines"></grid-list>
+        <pagination-list id="medicinesPag"></pagination-list>
+    </div>
+    <div class="col-4">
+        <div class="input-group">
+            <input id="inputSearch" class="form-control" type="text" placeholder="Nombre genérico">
+            <button onclick="searchMedicines()" class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalMedicine">
+                Añadir medicina
+            </button>
+            <div class="modal fade" id="modalMedicine" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Añada una nueva medicina</h1>
+                            <button onclick="removeFocus()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-floating">
+                                <input id="name" type="text" class="form-control" placeholder="">
+                                <label for="name">Nombre genérico</label>
+                            </div>
+                            <div class="form-floating">
+                                <input id="dose" type="text" class="form-control" placeholder="">
+                                <label for="dose">Dosis</label>
+                            </div>
+                            <div class="text-start">
+                                Formulación
+                            </div>
+                            <div>
+                                <select-list id="shapes"></select-list>
+                            </div>
+                            <div>
+                                <select-list id="units"></select-list>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="removeFocus()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button onclick="addMedicines()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h6 id="medicine"></h6>
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="quantity" type="text" class="form-control" placeholder="">
+            <label for="quantity">Cantidad</label>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="dosage" type="text" class="form-control" placeholder="">
+            <label for="dosage">Dosis</label>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-floating">
+            <input id="frequency" type="text" class="form-control" placeholder="">
+            <label for="frequency">Frecuencia</label>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="form-floating">
+        <input id="instructions" type="text" class="form-control" placeholder="">
+        <label for="instructions">Instrucciones</label>
+    </div>
+</div>
+<div>
+    <button onclick="renderAddRecord()" class="btn btn-outline-secondary" type="button">
+        Volver
+    </button>
+    <button onclick="addTreatments()" class="btn btn-outline-primary" type="button">
+        Añadir tratamiento
+    </button>
+</div>
