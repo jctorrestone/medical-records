@@ -37,6 +37,7 @@ async function fetchAPI(endpoint, method, body={}) {
 
 const fullRecord = {
     record: {
+        category: "primary",
         patient: null,
         rdate: null,
         age: null,
@@ -50,6 +51,32 @@ const fullRecord = {
     idx: [],
     exams: [],
     treatments: []
+}
+
+//TODO: JUST USE 1 RECORD FOR BOTH
+const followUpRecord = {
+    record: {
+        category: "secondary",
+        primary_record_id: null,
+        rdate: null
+    },
+    treatments: []
+}
+
+function formatDate(datetime) {
+    let rdate = datetime.split(" ")[0].split("-");
+    return `${rdate[2]}/${rdate[1]}/${rdate[0]}`
+}
+
+function resetFullRecord() {
+}
+
+function resetFollowUpRecord() {
+    const record = followUpRecord.record;
+    record.primary_record_id = null;
+    record.rdate = null;
+
+    followUpRecord.treatments = [];
 }
 
 renderMain();

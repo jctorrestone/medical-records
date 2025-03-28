@@ -61,19 +61,19 @@
 <div class="row">
     <div class="col-4">
         <div class="form-floating">
-            <input id="quantity" type="text" class="form-control" placeholder="">
+            <input id="quantity" type="number" class="form-control" placeholder="">
             <label for="quantity">Cantidad</label>
         </div>
     </div>
     <div class="col-4">
         <div class="form-floating">
-            <input id="dosage" type="text" class="form-control" placeholder="">
+            <input id="dosage" type="number" class="form-control" placeholder="">
             <label for="dosage">Dosis</label>
         </div>
     </div>
     <div class="col-4">
         <div class="form-floating">
-            <input id="frequency" type="text" class="form-control" placeholder="">
+            <input id="frequency" type="number" class="form-control" placeholder="">
             <label for="frequency">Frecuencia</label>
         </div>
     </div>
@@ -85,10 +85,10 @@
     </div>
 </div>
 <div>
-    <button onclick="renderAddRecord()" class="btn btn-outline-secondary" type="button">
+    <button id="btnBack" class="btn btn-outline-secondary" type="button">
         Volver
     </button>
-    <button onclick="addTreatments()" class="btn btn-outline-primary" type="button">
+    <button id="btnAdd" class="btn btn-outline-primary" type="button">
         Añadir tratamiento
     </button>
 </div>

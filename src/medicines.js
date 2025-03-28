@@ -2,15 +2,15 @@ class Medicine {
     static className = "Medicine";
 
     static header = `
-        <div class="row">
+        <div class="row list-bot-line">
             <div class="col-6">
-                Nombre genérico
+                <span class="subtitle">Nombre genérico</span>
             </div>
             <div class="col-3">
-                Tipo
+                <span class="subtitle">Tipo</span>
             </div>
             <div class="col-3">
-                Dosis
+                <span class="subtitle">Dosis</span>
             </div>
         </div>
     `;

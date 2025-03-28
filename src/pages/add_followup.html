@@ -1,0 +1,48 @@
+<div class="modal fade" id="modalFollowUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalFollowUpLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalFollowUpLabel">AVISO</h1>
+                <button onclick="removeFocus()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Añadir el seguimiento?</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="removeFocus()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button onclick="addFollowUpRecords()" type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <H4>
+        Seguimiento de historia clínica: <span id="prdate"></span>
+    </H4>
+</div>
+<div class="row">
+    <div class="col-8">
+        <h5 id="patient"></h5>
+    </div>
+    <div class="col-4">
+        <input id="rdate" class="form-control" type="date">
+    </div>
+</div>
+<div class="text-start">
+    <h6>
+        Tratamiento
+    </h6>
+</div>
+<div>
+    <select class="form-select" size="1" id="treatments" multiple>
+        <option onclick="renderAddTreatment(2)" selected>Añadir tratamiento...</option>
+    </select>
+</div>
+<div>
+    <button id="btnBack" class="btn btn-outline-secondary" type="button">
+        Volver
+    </button>
+    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalFollowUp">
+        Añadir
+    </button>
+</div>

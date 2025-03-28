@@ -19,19 +19,19 @@ async function startElements() {
     const age = document.getElementById("age");
     age.value = record.age? record.age:null;
     age.onchange = () => {
-        record.age = age.value;
+        record.age = Number(age.value);
     };
 
     const weight = document.getElementById("weight");
     weight.value = record.weight? record.weight:null;
     weight.onchange = () => {
-        record.weight = weight.value;
+        record.weight = Number(weight.value);
     };
 
     const height = document.getElementById("height");
     height.value = record.height? record.height:null;
     height.onchange = () => {
-        record.height = height.value;
+        record.height = Number(height.value);
     };
 
     const history = document.getElementById("history");
@@ -49,7 +49,7 @@ async function startElements() {
     const duration = document.getElementById("duration");
     duration.value = record.duration? record.duration:null;
     duration.onchange = () => {
-        record.duration = duration.value;
+        record.duration = Number(duration.value);
     };
 
     const symptoms = document.getElementById("symptoms");
@@ -114,8 +114,17 @@ async function oncheckedExam(checkbox, exam) {
 async function addRecords() {
     await fetchAPI("records", "POST", fullRecord);
     
-    //reset inputs
+    //TODO: reset inputs
 
     await renderMain();
+    removeFocus();
+}
+
+async function addFollowUpRecords() {
+    await fetchAPI("records", "POST", followUpRecord);
+    
+    //TODO: reset inputs
+
+    await renderRecord(followUpRecord.primary_record);
     removeFocus();
 }

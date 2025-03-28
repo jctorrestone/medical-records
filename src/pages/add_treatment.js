@@ -1,4 +1,4 @@
-async function renderAddTreatment() {
+async function renderAddTreatment(version) {
     await loadPage("add_treatment");
     const json = await fetchAPI("medicines", "GET");
 
@@ -19,19 +19,19 @@ async function renderAddTreatment() {
     const quantity = document.getElementById("quantity");
     quantity.value = treatment.quantity? treatment.quantity:null;
     quantity.onchange = () => {
-        treatment.quantity = quantity.value;
+        treatment.quantity = Number(quantity.value);
     };
 
     const dosage = document.getElementById("dosage");
     dosage.value = treatment.dosage? treatment.dosage:null;
     dosage.onchange = () => {
-        treatment.dosage = dosage.value;
+        treatment.dosage = Number(dosage.value);
     };
 
     const frequency = document.getElementById("frequency");
     frequency.value = treatment.frequency? treatment.frequency:null;
     frequency.onchange = () => {
-        treatment.frequency = frequency.value;
+        treatment.frequency = Number(frequency.value);
     };
 
     const instructions = document.getElementById("instructions");
@@ -55,12 +55,17 @@ async function renderAddTreatment() {
         units.innerHTML = "";
         units.default = Unit.default;
         units.list = formulations.map(formulation => {return {id: formulation.id, symbol: formulation.unit.symbol}});
-        units.method =
         units.option = Unit.className;
         units.init();
     };
     shapes.option = Shape.className;
     shapes.init();
+
+    const btnBack = document.getElementById("btnBack");
+    btnBack.onclick = () => version == 1? renderAddRecord():renderAddFollowUp(followUpRecord.primary_record);
+
+    const btnAdd = document.getElementById("btnAdd");
+    btnAdd.onclick = () => version == 1? addTreatments():addFollowUpTreatments();
 }
 
 async function searchMedicines(page=0) {
@@ -131,8 +136,38 @@ async function addTreatments() {
     await renderAddRecord();
 }
 
+async function addFollowUpTreatments() {
+    if(followUpRecord.treatments.some(treat => treat.medicine_id == treatment.medicine_id)) {
+        return;
+    }
+
+    for (const property in treatment) {
+        if(!treatment[property]) {
+            return;
+        }
+    }
+
+    followUpRecord.treatments.push({...treatment});
+
+    for (const property in treatment) {
+        treatment[property] = null;
+    }
+    
+    await renderAddFollowUp(followUpRecord.primary_record);
+}
+
 async function removeTreatment(id) {
     fullRecord.treatments = fullRecord.treatments.filter((treatment) => {
+        return treatment.medicine_id != id;
+    });
+
+    const treatments = document.getElementById("treatments");
+    const option = treatments.querySelector(`option[value="${id}"]`);
+    treatments.removeChild(option);
+}
+
+async function removeFollowUpTreatment(id) {
+    followUpRecord.treatments = followUpRecord.treatments.filter((treatment) => {
         return treatment.medicine_id != id;
     });
 

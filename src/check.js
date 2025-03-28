@@ -18,10 +18,22 @@ class Check extends HTMLElement {
     }
 
     init() {
-        const list_group = document.createElement("ul");
-        list_group.setAttribute("class", "list-group");
+        const row = document.createElement("div");
+        row.setAttribute("class", "row") 
 
-        this._list.forEach(element => {
+        const first_col = document.createElement("div");
+        first_col.setAttribute("class", "col-6")
+
+        const second_col = document.createElement("div");
+        second_col.setAttribute("class", "col-6")
+
+        const first_list_group = document.createElement("ul");
+        first_list_group.setAttribute("class", "list-group");
+
+        const second_list_group = document.createElement("ul");
+        second_list_group.setAttribute("class", "list-group");
+
+        this._list.forEach((element, i) => {
             const group_item = document.createElement("li");
             group_item.setAttribute("class", "list-group-item");
 
@@ -29,10 +41,19 @@ class Check extends HTMLElement {
             group_item.appendChild(check);
             group_item.appendChild(label);
 
-            list_group.appendChild(group_item);
+            if( i < this._list.length/2) {
+                first_list_group.appendChild(group_item);
+            }
+            else {
+                second_list_group.appendChild(group_item);
+            }
         });
 
-        this.appendChild(list_group);
+        first_col.appendChild(first_list_group);
+        second_col.appendChild(second_list_group);
+        row.appendChild(first_col);
+        row.appendChild(second_col);
+        this.appendChild(row);
     }
 }
 

@@ -2,15 +2,15 @@ class Patient {
     static className = "Patient";
 
     static header = `
-        <div class="row">
+        <div class="row list-bot-line">
             <div class="col-5">
-                Apellidos
+                <span class="subtitle">Apellidos</span>
             </div>
             <div class="col-5">
-                Nombres
+                <span class="subtitle">Nombres</span>
             </div>
             <div class="col-2">
-                Género
+                <span class="subtitle">Género</span>
             </div>
         </div>
     `;

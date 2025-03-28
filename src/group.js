@@ -31,7 +31,7 @@ class Group extends HTMLElement {
 
             const input = document.createElement("input");
             input.setAttribute("class", "form-control");
-            input.setAttribute("type", "text");
+            input.setAttribute("type", "number");
             input.setAttribute("placeholder", placeholder);
 
             group.appendChild(group_text);

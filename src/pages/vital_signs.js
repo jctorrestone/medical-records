@@ -13,19 +13,19 @@ async function renderVitalSigns() {
         const checkbox = document.querySelector(`input[type=checkbox][value="${vital_sign.vital_sign_id}"]`);
         checkbox.checked = true;
         const group = checkbox.parentNode.parentNode;
-        const input = group.querySelector("input[type=text]");
+        const input = group.querySelector("input[type=number]");
         input.value = vital_sign.value;
     });
 }
 
 async function oncheckedVitalSign(checkbox, vitalSign) {
     const group = checkbox._check.parentNode.parentNode;
-    const input = group.querySelector("input[type=text]");
+    const input = group.querySelector("input[type=number]");
 
     if(checkbox._check.checked) {
         fullRecord.vital_signs.push({
             vital_sign_id: vitalSign.id,
-            value: input.value
+            value: Number(input.value)
         });
     }
     else {

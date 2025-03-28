@@ -2,15 +2,15 @@ class Record {
     static className = "Record";
 
     static header = `
-        <div class="row">
+        <div class="row list-bot-line">
             <div class="col-3">
-                Fecha
+                <span class="subtitle">Fecha</span>
             </div>
             <div class="col-3">
-                Tiempo de la enfermedad
+                <span class="subtitle">Tiempo de enfermedad</span>
             </div>
             <div class="col-6">
-                Paciente
+                <span class="subtitle">Paciente</span>
             </div>
         </div>
     `;
@@ -22,7 +22,7 @@ class Record {
 
         const date = document.createElement("div");
         date.setAttribute("class", "col-3");
-        date.append(record.rdate);
+        date.append(formatDate(record.rdate));
 
         const duration = document.createElement("div");
         duration.setAttribute("class", "col-3");

@@ -2,9 +2,9 @@ class Symptom {
     static className = "Symptom";
 
     static header = `
-        <div class="row">
+        <div class="row list-bot-line">
             <div class="col">
-                Lista de síntomas
+                <span class="subtitle">Lista de síntomas</span>
             </div>
         </div>
     `;

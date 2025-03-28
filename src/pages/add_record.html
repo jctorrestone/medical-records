@@ -36,19 +36,19 @@
 <div class="row">
     <div class="col-4">
         <div class="form-floating">
-            <input id="age" type="text" class="form-control" placeholder="">
+            <input id="age" type="number" class="form-control" placeholder="">
             <label for="age">Edad</label>
         </div>
     </div>
     <div class="col-4">
         <div class="form-floating">
-            <input id="weight" type="text" class="form-control" placeholder="">
+            <input id="weight" type="number" class="form-control" placeholder="">
             <label for="weight">Peso</label>
         </div>
     </div>
     <div class="col-4">
         <div class="form-floating">
-            <input id="height" type="text" class="form-control" placeholder="">
+            <input id="height" type="number" class="form-control" placeholder="">
             <label for="height">Talla</label>
         </div>
     </div>
@@ -66,7 +66,7 @@
 <div class="row">
     <div class="col-6">
         <div class="form-floating">
-            <input id="duration" type="text" class="form-control" placeholder="">
+            <input id="duration" type="number" class="form-control" placeholder="">
             <label for="duration">Tiempo de la enfermedad</label>
         </div>
     </div>
@@ -100,7 +100,7 @@
     </h6>
 </div>
 <div>
-    <check-list id="exams"></check-list>
+    <check-list class="text-start" id="exams"></check-list>
 </div>
 <div class="text-start">
     <h6>
@@ -109,7 +109,7 @@
 </div>
 <div>
     <select class="form-select" size="1" id="treatments" multiple>
-        <option onclick="renderAddTreatment()" selected>Añadir tratamiento...</option>
+        <option onclick="renderAddTreatment(1)" selected>Añadir tratamiento...</option>
     </select>
 </div>
 <div>
